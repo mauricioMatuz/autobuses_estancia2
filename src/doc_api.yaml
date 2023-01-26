@@ -1,0 +1,108 @@
+openapi: 3.0.0
+info:
+  version: 1.0.0
+  title: Api estancia
+  description: aprendiendo a usar swagger
+servers:
+  # Added by API Auto Mocking Plugin
+  # Added by API Auto Mocking Plugin
+  - description: SwaggerHub API Auto Mocking
+    url: https://virtserver.swaggerhub.com/KILLASHE96/apirest/1.0.0
+  - description: servidor local para correr la api
+    url: http://localhost:8080
+
+paths:
+  /api/usuario:
+    get:
+      description: Extrae la lista de usuarios con su informacion completa
+      parameters:
+        - in: query
+          name: nombre
+          required: true
+          description: nombre del usuario
+          schema:
+            type: string
+            example: mauricio matuz
+
+        - in: query
+          name: correo
+          required: true
+          description: correo del usuario
+          schema:
+            type: string
+            example: killashe96@gmail.com
+
+        - in: query
+          name: contrasenia
+          required: true
+          description: contrasenia del usuario
+          schema:
+            type: string
+            example: 1234
+
+      responses:
+        200:
+          description: Todo OK
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  properties:
+                    nombre:
+                      type: string
+                      example: mauricio matuz
+                    correo:
+                      type: string
+                      example: matamau@gmail.com
+                    contraseña:
+                      type: string
+                      example: contraseña
+                    usuario:
+                      type: string
+                      example: maumatuz
+        404:
+          description: Pagina no encontrada
+          content:
+            application/json:
+              schema:
+                type: string
+                example: { "message": "Error 404. Pagina no encontrada." }
+  /api/registrar/usuario:
+    post:
+      description: Registro de usuario
+      parameters:
+        - name: ejemplo
+          in: query
+          description: Datos que se envia para el registro de un nuevo usuario
+          schema:
+            type: object
+            properties:
+              nombre:
+                type: string
+                description: nombre del usuario
+                example: Eduardo Tamayo
+              usuario:
+                type: string
+                description: alias del usuario
+                example: edutama
+              correo:
+                type: string
+                description: Correo del usuario
+                example: eduardo@gmail.com
+              contrasenia:
+                type: string
+                description: contraseña del usuario
+                example: maTe123
+
+      responses:
+        200:
+          description: Registro exitoso
+
+        404:
+          description: Pagina no encontrada
+          content:
+            application/json:
+              schema:
+                type: string
+                example: { "message": "Error 404. Pagina no encontrada." }

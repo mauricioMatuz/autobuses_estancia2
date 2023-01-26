@@ -11,6 +11,7 @@ export const verUsuarios = async (req, res) => {
 
 export const registrar = async (req, res) => {
   try {
+    console.log("SI ENTRO A REGISTRAR PERO NO JALA EN EL FRONT");
     const { nombre, usuario, correo, contrasenia } = req.body;
     const usuarios = await usuarioM.create({
       nombre,
@@ -66,6 +67,29 @@ export const actualizarUsuario = async (req, res) => {
       usuarios.set(req.body);
       await usuarios.save();
       return res.json(usuario);
+    }
+  } catch (error) {
+    return res.status(500).json({ message: error.message });
+  }
+};
+
+export const iniciarSesion = async (req, res) => {
+  try {
+    console.log("SI ENTRO XD");
+    const { usuario, contrasenia } = req.body;
+    console.log("usuario ", usuario, "\tcontraseña ", contrasenia);
+    const usuarios = await usuarioM.findOne({
+      where: {
+        usuario,
+        contrasenia,
+      },
+    });
+    if (usuarios == null) {
+      console.log(" ES NULL");
+      return res.status(500).json({ message: "ERROR NO INICIA" });
+    } else {
+      console.log("NO ES NULL");
+      return res.json(usuarios);
     }
   } catch (error) {
     return res.status(500).json({ message: error.message });

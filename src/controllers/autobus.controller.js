@@ -51,7 +51,8 @@ export const createBoletos = async (req, res) => {
 
 export const updateBoleto = async (req, res) => {
   try {
-    const { folioB } = req.params;
+    const { folioB } = req.body;
+    console.log(folioB);
     const boletos = await boleto.findOne({
       where: {
         folioB,
@@ -69,6 +70,7 @@ export const updateBoleto = async (req, res) => {
     return res.status(500).json({ message: error.message });
   }
 };
+
 export const deleteBoleto = async (req, res) => {
   try {
     console.log("SI");

@@ -1,4 +1,9 @@
 import express from "express";
+import swaggerUI from "swagger-ui-express";
+import YAML from "yamljs";
+
+// import { path } from "path";
+
 import autobusRoutes from "./routes/boletos.routes.js";
 import maletaRoutes from "./routes/maletas.routes.js";
 import usuarioRoutes from "./routes/usuario.routes.js";
@@ -16,6 +21,10 @@ app.use((req, res, next) => {
   res.header("Allow", "GET, POST, OPTIONS, PUT, DELETE");
   next();
 });
+
+const swaggerDoc = YAML.load("./doc_api.yaml");
+
+app.use("/api-doc", swaggerUI.serve, swaggerUI.setup(swaggerDoc));
 
 app.use(autobusRoutes);
 app.use(maletaRoutes);
