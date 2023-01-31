@@ -12,6 +12,7 @@ export const verUsuarios = async (req, res) => {
 export const registrar = async (req, res) => {
   try {
     const { nombre, usuario, correo, contrasenia } = req.body;
+
     const usuarios = await usuarioM.create({
       nombre,
       usuario,
@@ -57,15 +58,17 @@ export const buscarUsuario = async (req, res) => {
 export const actualizarUsuario = async (req, res) => {
   try {
     const { id } = req.body;
-    const usuarios = usuarioM.findOne({
+    console.log("ID", id);
+    const usuarios = await usuarioM.findOne({
       where: { id },
     });
     if (usuarios == null) {
       return res.json({ message: "usuario NO ENCONTRADO" });
     } else {
+      console.log("NO NULL");
       usuarios.set(req.body);
       await usuarios.save();
-      return res.json(usuario);
+      return res.json(usuarios);
     }
   } catch (error) {
     return res.status(500).json({ message: error.message });

@@ -131,7 +131,7 @@ paths:
                   type: string
                   description: correo del usuario que se registrará
                   example: dankerGame@gmail.com
-                constrasenia:
+                contrasenia:
                   type: string
                   description: Contraseña para poder logearse
                   example: colmillo1470
