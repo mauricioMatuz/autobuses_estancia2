@@ -22,9 +22,9 @@ app.use((req, res, next) => {
   next();
 });
 
-const swaggerDoc = YAML.load("./doc_api.yaml");
+const swaggerDoc = YAML.load("./yaml/doc_apiUser.yaml");
 
-app.use("/api-doc", swaggerUI.serve, swaggerUI.setup(swaggerDoc));
+app.use("/api-doc/user", swaggerUI.serve, swaggerUI.setup(swaggerDoc));
 
 app.use(autobusRoutes);
 app.use(maletaRoutes);

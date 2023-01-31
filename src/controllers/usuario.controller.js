@@ -11,7 +11,6 @@ export const verUsuarios = async (req, res) => {
 
 export const registrar = async (req, res) => {
   try {
-    console.log("SI ENTRO A REGISTRAR PERO NO JALA EN EL FRONT");
     const { nombre, usuario, correo, contrasenia } = req.body;
     const usuarios = await usuarioM.create({
       nombre,
@@ -27,7 +26,7 @@ export const registrar = async (req, res) => {
 
 export const borrarUsuario = async (req, res) => {
   try {
-    const { id } = req.params;
+    const { id } = req.body;
     console.log("ESTO ES ID DELETE ", id);
     const usuarios = await usuarioM.destroy({
       where: { id },
@@ -40,7 +39,7 @@ export const borrarUsuario = async (req, res) => {
 
 export const buscarUsuario = async (req, res) => {
   try {
-    const { id } = req.params;
+    const { id } = req.body;
     console.log(id, " esto es id");
     const usuarios = await usuarioM.findOne({
       where: { id },
@@ -57,12 +56,12 @@ export const buscarUsuario = async (req, res) => {
 
 export const actualizarUsuario = async (req, res) => {
   try {
-    const { id } = req.params;
+    const { id } = req.body;
     const usuarios = usuarioM.findOne({
       where: { id },
     });
     if (usuarios == null) {
-      return res.json({ message: "usuarioM NO ENCONTRADO" });
+      return res.json({ message: "usuario NO ENCONTRADO" });
     } else {
       usuarios.set(req.body);
       await usuarios.save();

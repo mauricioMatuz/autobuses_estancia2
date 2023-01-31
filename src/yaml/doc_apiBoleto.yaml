@@ -1,0 +1,11 @@
+openapi: 3.0.0
+info:
+  title: Documentación de los boletos
+  version: 1.0.0
+  description: Ejemplos para las URL de los boletos
+servers:
+  - description: Sevidor local para correr la api
+    url: http://localhost:8080
+
+paths:
+  

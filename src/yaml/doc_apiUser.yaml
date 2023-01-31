@@ -1,0 +1,183 @@
+openapi: 3.0.0
+info:
+  version: 1.0.0
+  title: Documentación de los usuarios
+  description: Ejemplos para las URL de los usuarios para usarlo en back
+servers:
+  # Added by API Auto Mocking Plugin
+  # Added by API Auto Mocking Plugin
+  - description: servidor local para correr la api
+    url: http://localhost:8080
+
+paths:
+  /api/usuario:
+    get:
+      summary: Listado de todo el usuario registrado
+      
+
+      responses:
+        200:
+          description: Todo OK
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  properties:
+                    nombre:
+                      type: string
+                      example: mauricio matuz
+                    correo:
+                      type: string
+                      example: matamau@gmail.com
+                    contraseña:
+                      type: string
+                      example: contraseña
+                    usuario:
+                      type: string
+                      example: maumatuz
+        404:
+          description: Pagina no encontrada
+          content:
+            application/json:
+              schema:
+                type: string
+                example: { "message": "Error 404. Pagina no encontrada." }
+
+  /api/registrar/usuario:
+    post:
+      summary: Crear nuevo usuario
+      requestBody:
+        description: Valores que se envia para Registro
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                nombre:
+                  type: string
+                  description: Nombre completo del usuario al registrar
+                  example: Eduardo Tamayo
+                usuario:
+                  type: string
+                  description: Usuario del que se registrará
+                  example: eduarTam
+                correo:
+                  type: string
+                  description: correo del usuario que se registrará
+                  example: eduardo@gmail.com
+                constrasenia:
+                  type: string
+                  description: Contraseña para poder logearse
+                  example: 123
+      responses:
+        200:
+          description: Registro exitoso
+
+        404:
+          description: Pagina no encontrada
+          content:
+            application/json:
+              schema:
+                type: string
+                example: { "message": "Error 404. Pagina no encontrada." }
+
+  /api/eliminar/usuario:
+    delete:
+      summary: Borrar usuario
+      requestBody:
+        description: Borrar un usuario mediante su ID
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                id:
+                  type: string
+                  description: ID del usuario que se desea a eliminar
+                  example: 1
+      responses:
+        200:
+          description: Usuario eliminado
+
+  /api/actualizar/usuario:
+    put:
+      summary: Actualizar usuario
+      requestBody:
+        description: Actualizar valores del usuario
+          (es posible solo actualizar algunas cosas, no es necesario todo,
+          en el ejemplo se usa todo pero se puede borrar y se actualizara de manera correcta)
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                id:
+                  type: string
+                  description: El ID que se usara para encontrar al usuario que desea actualizar
+                  example: 8
+                nombre:
+                  type: string
+                  description: Nombre completo del usuario al registrar
+                  example: Jaime Grimaldo
+                usuario:
+                  type: string
+                  description: Usuario del que se registrará
+                  example: El_Danker
+                correo:
+                  type: string
+                  description: correo del usuario que se registrará
+                  example: dankerGame@gmail.com
+                constrasenia:
+                  type: string
+                  description: Contraseña para poder logearse
+                  example: colmillo1470
+      responses:
+        200:
+          description: Usuario Actualizado
+
+  /api/buscar/usuario:
+    post:
+      summary: Busqueda de usuario
+      requestBody:
+        description: Busqueda de usuario mediante la ID
+          (este ID es un ejemplo, pero se puede cambiar)
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                id:
+                  type: string
+                  description: ID del usuario que desa buscar
+                  example: 7
+      responses:
+        200:
+          description: Mostrar caracteristicas del usuario en concreto
+
+  /api/iniciar:
+    post:
+      summary: Inicio de Sesion
+      requestBody:
+        description: Forma de iniciar sesion
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                usuario:
+                  type: string
+                  description: usuario creado previamente al registrar
+                  example: El_Danker
+                contrasenia:
+                  type: string
+                  description: contraseña del usuario previamente creado
+                  example: colmillo1470
+      responses:
+        200:
+          description: Moverse a la ventana del dashboard
