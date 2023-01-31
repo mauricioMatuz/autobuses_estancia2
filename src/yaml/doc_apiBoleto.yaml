@@ -44,4 +44,60 @@ paths:
     post:
       summary: Vender (crear) boletos
       requestBody:
-        
+        description: Valores necesarios para vender (registrar) un boleto
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                nombre:
+                  type: string
+                  description: nombre del comprador
+                  example: janet tamayo
+                marca:
+                  type: string
+                  description: marca del autobus que tomara (OCC,Colon)
+                  example: OCC
+                servicio:
+                  type: string
+                  description: Clase de servicio que se aborda (primera clase o clase turista)
+                  example: clase turista
+                origen:
+                  type: string
+                  description: Lugar donde se compra el boleto
+                  example: Oaxaca
+                terminal_salida:
+                  type: string
+                  description: Terminal donde se abordara el autobus
+                  example: M5D
+                destino:
+                  type: string
+                  description: Lugar al cual se dirige
+                  example: Guerrero
+                terminal_llegada:
+                  type: string
+                  description: Terminal al cual va a desbordar
+                  example: M3K
+                fecha_salida:
+                  type: string
+                  description: Dia en que el autobus sale 
+                corrida:
+                  type: string
+                  description: Libre o Caseta
+                asiento:
+                  type: string
+                  description: Asiento correspondiente del cliente
+                hora_salida:
+                  type: string
+                  description: Horario de salida del autobus
+                folio:
+                  type: string
+                  description: Folio del boleto
+                precio:
+                  type: string
+                  description: total a pagar
+      responses:
+        200:
+          description: Registro exitoso
+                
