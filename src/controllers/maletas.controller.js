@@ -1,5 +1,5 @@
 import { maleta } from "../models/maletas.models.js";
-import { boleto } from "../boletos.models.js";
+import { boleto } from "../models/boletos.models.js";
 
 export const verMaletas = async (req, res) => {
   try {
@@ -9,7 +9,7 @@ export const verMaletas = async (req, res) => {
     console.log("ERROR EN MALETA WEON ", error);
     return res.status(500).json({ message: error.message });
   }
-};// para resubir
+}; // para resubir
 
 export const crearMaletas = async (req, res) => {
   try {

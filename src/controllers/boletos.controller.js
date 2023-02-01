@@ -1,4 +1,4 @@
-import { boleto } from "../boletos.models.js";
+import { boleto } from "../models/boletos.models.js";
 import { maleta } from "../models/maletas.models.js";
 
 export const getBoletos = async (req, res) => {
