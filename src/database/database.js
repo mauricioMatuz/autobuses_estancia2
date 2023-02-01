@@ -9,3 +9,4 @@ export const sequelize = new Sequelize("centro_autobuses", "mau", "123", {
 //   dialect: "postgres",
 // });
 
+// para resubir

@@ -10,7 +10,7 @@ export const verUsuarios = async (req, res) => {
     return res.status(500).json({ message: "Error servidor" });
   }
 };
-
+// para resubir
 export const registrar = async (req, res) => {
   try {
     const { nombre, usuario, correo, contrasenia } = req.body;

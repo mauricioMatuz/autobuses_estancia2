@@ -13,7 +13,7 @@ export const getAutobus = async (req, res) => {
         "nombre",
         "licencia",
       ],
-    });
+    }); // para resubir
     return res.status(200).json({ message: autobus });
   } catch (error) {
     return res.status(500).json({ message: "ERROR" });

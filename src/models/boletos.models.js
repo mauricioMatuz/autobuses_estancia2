@@ -1,5 +1,5 @@
 import { DataTypes } from "sequelize";
-import { sequelize } from "../database/database.js";
+import { sequelize } from "./database/database.js";
 import { maleta } from "./maletas.models.js";
 
 export const boleto = sequelize.define("boletos", {
@@ -58,3 +58,4 @@ maleta.belongsTo(boleto, {
   foreingKey: "boleto_id",
   targetId: "id",
 });
+// para resubir

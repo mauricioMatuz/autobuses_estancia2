@@ -15,4 +15,4 @@ router.put("/api/autobus/actualizar", cors(), actualizarAutobus);
 router.delete("/api/autobus/borrar", cors(), borrarAutobus);
 router.get("/api/autobus/buscar", cors(), buscarAutobus);
 
-export default router;
+export default router; //

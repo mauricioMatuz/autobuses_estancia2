@@ -15,3 +15,4 @@ router.delete("/api/eliminar/maleta", cors(), eliminarMaleta);
 router.put("/api/actualizar/maleta/:folio", cors(), actualizarMaleta);
 
 export default router;
+// para resubir

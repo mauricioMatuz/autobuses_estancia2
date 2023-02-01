@@ -14,3 +14,4 @@ export const maleta = sequelize.define("maletas", {
     type: DataTypes.STRING,
   },
 });
+// para resubir

@@ -36,3 +36,4 @@ export const Autobus = sequelize.define("autobus", {
     allowNull: false,
   },
 });
+// para resubir

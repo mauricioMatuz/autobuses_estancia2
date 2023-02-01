@@ -20,3 +20,4 @@ export const usuarioM = sequelize.define("usuario", {
     type: DataTypes.STRING,
   },
 });
+// para resubir

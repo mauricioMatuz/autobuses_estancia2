@@ -6,6 +6,7 @@ info:
 servers:
   # Added by API Auto Mocking Plugin
   # Added by API Auto Mocking Plugin
+  # para resubir
   - description: servidor local para correr la api
     url: http://34.225.239.102
 

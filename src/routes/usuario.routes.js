@@ -17,3 +17,4 @@ router.put("/api/actualizar/usuario", cors(), actualizarUsuario);
 router.post("/api/buscar/usuario", cors(), buscarUsuario);
 router.get("/api/iniciar", cors(), iniciarSesion);
 export default router;
+//

@@ -1,4 +1,4 @@
-import { boleto } from "../models/boletos.models.js";
+import { boleto } from "../boletos.models.js";
 import { maleta } from "../models/maletas.models.js";
 
 export const getBoletos = async (req, res) => {
@@ -9,7 +9,7 @@ export const getBoletos = async (req, res) => {
     return res.status(500).json({ message: error.message });
   }
 };
-
+// para resubir
 export const createBoletos = async (req, res) => {
   try {
     const {
