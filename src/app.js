@@ -24,8 +24,8 @@ app.use((req, res, next) => {
   next();
 });
 
-const swaggerDoc = YAML.load("./yaml/doc_apiUser.yaml");
-const swaggerDocAuto = YAML.load("./yaml/doc_apiAutobus.yaml");
+const swaggerDoc = YAML.load("doc_apiUser.yaml");
+const swaggerDocAuto = YAML.load("doc_apiAutobus.yaml");
 app.use("/api-doc/user", swaggerUI.serve, swaggerUI.setup(swaggerDoc));
 app.use("/api-doc/bus", swaggerUI.serve, swaggerUI.setup(swaggerDocAuto));
 
