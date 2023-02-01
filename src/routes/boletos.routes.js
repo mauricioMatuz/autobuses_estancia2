@@ -6,7 +6,7 @@ import {
   updateBoleto,
   getOneBoleto,
   buscarMaleta,
-} from "../controllers/boleto.controller.js";
+} from "../controllers/boletos.controller.js";
 import cors from "cors";
 const router = Router();
 

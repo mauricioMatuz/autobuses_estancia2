@@ -7,13 +7,12 @@ servers:
   # Added by API Auto Mocking Plugin
   # Added by API Auto Mocking Plugin
   - description: servidor local para correr la api
-    url: http://localhost:8080
+    url: http://34.225.239.102
 
 paths:
   /api/usuario:
     get:
       summary: Listado de todo el usuario registrado
-      
 
       responses:
         200:
@@ -160,7 +159,7 @@ paths:
           description: Mostrar caracteristicas del usuario en concreto
 
   /api/iniciar:
-    post:
+    get:
       summary: Inicio de Sesion
       requestBody:
         description: Forma de iniciar sesion

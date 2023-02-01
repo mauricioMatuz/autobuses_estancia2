@@ -19,5 +19,4 @@ export const usuarioM = sequelize.define("usuario", {
   contrasenia: {
     type: DataTypes.STRING,
   },
-  
 });

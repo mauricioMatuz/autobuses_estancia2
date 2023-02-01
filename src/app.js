@@ -4,9 +4,11 @@ import YAML from "yamljs";
 
 // import { path } from "path";
 
-import autobusRoutes from "./routes/boletos.routes.js";
+import boletosRoutes from "./routes/boletos.routes.js";
 import maletaRoutes from "./routes/maletas.routes.js";
 import usuarioRoutes from "./routes/usuario.routes.js";
+import autobusRoutes from "./routes/autobus.routes.js";
+
 const app = express();
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
@@ -23,11 +25,13 @@ app.use((req, res, next) => {
 });
 
 const swaggerDoc = YAML.load("./yaml/doc_apiUser.yaml");
-
+const swaggerDocAuto = YAML.load("./yaml/doc_apiAutobus.yaml");
 app.use("/api-doc/user", swaggerUI.serve, swaggerUI.setup(swaggerDoc));
+app.use("/api-doc/bus", swaggerUI.serve, swaggerUI.setup(swaggerDocAuto));
 
-app.use(autobusRoutes);
+app.use(boletosRoutes);
 app.use(maletaRoutes);
 app.use(usuarioRoutes);
+app.use(autobusRoutes);
 
 export default app;
