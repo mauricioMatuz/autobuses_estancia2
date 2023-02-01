@@ -82,22 +82,114 @@ paths:
                 fecha_salida:
                   type: string
                   description: Dia en que el autobus sale 
+                  example: 02/02/2023
                 corrida:
                   type: string
                   description: Libre o Caseta
+                  example: libre
                 asiento:
                   type: string
                   description: Asiento correspondiente del cliente
+                  example: A2-B
                 hora_salida:
                   type: string
                   description: Horario de salida del autobus
+                  example: 23:30 hrs
                 folio:
                   type: string
                   description: Folio del boleto
+                  example: LQUTS58
                 precio:
                   type: string
                   description: total a pagar
+                  example: 250
       responses:
         200:
           description: Registro exitoso
                 
+  /api/eliminar/boleto:
+    delete:
+      summary: Borrar boleto "cancelado"
+      requestBody:
+        description: Borrar un boleto mediante su ID
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                id:
+                  type: string
+                  description: ID del boleto que desea eliminar
+                  example: 2
+      responses:
+        200:
+          description: Boleto eliminado
+
+  /api/actualizar/boleto:
+    put:
+      summary: Actualizar boleto 
+      requestBody:
+        description: Actualizar boleto por si se escribe algo mal o reclama
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                id:
+                  type: string
+                  description: El ID que se usara para encontrar el boleto
+                  example: 2
+                nombre:
+                  type: string
+                  description: nombre del comprador
+                  example: janet tamayo
+                marca:
+                  type: string
+                  description: marca del autobus que tomara (OCC,Colon)
+                  example: OCC
+                servicio:
+                  type: string
+                  description: Clase de servicio que se aborda (primera clase o clase turista)
+                  example: primera clase
+                origen:
+                  type: string
+                  description: Lugar donde se compra el boleto
+                  example: Ocosingo
+                terminal_salida:
+                  type: string
+                  description: Terminal donde se abordara el autobus
+                  example: L5D
+                destino:
+                  type: string
+                  description: Lugar al cual se dirige
+                  example: San Cristobal
+                terminal_llegada:
+                  type: string
+                  description: Terminal al cual va a desbordar
+                  example: N3K
+                fecha_salida:
+                  type: string
+                  description: Dia en que el autobus sale 
+                  example: 03/02/2023
+                corrida:
+                  type: string
+                  description: Libre o Caseta
+                  example: Caseta
+                asiento:
+                  type: string
+                  description: Asiento correspondiente del cliente
+                  example: B2
+                hora_salida:
+                  type: string
+                  description: Horario de salida del autobus
+                  example: 22:0 hrs
+                folio:
+                  type: string
+                  description: Folio del boleto
+                  example: LQUQS58
+                precio:
+                  type: string
+                  description: total a pagar
+                  example: 350 

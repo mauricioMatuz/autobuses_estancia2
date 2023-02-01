@@ -13,4 +13,11 @@ export const maleta = sequelize.define("maletas", {
   precio: {
     type: DataTypes.STRING,
   },
+  timestamps: false,
+
+  // If don't want createdAt
+  createdAt: false,
+
+  // If don't want updatedAt
+  updatedAt: false,
 });
