@@ -3,7 +3,7 @@ import { usuarioM } from "../models/usuario.models.js";
 export const verUsuarios = async (req, res) => {
   try {
     const usuario = await usuarioM.findAll({
-      attributes: ["nombre", "usuario", "correo", "contrasenia"],
+      attributes: ["id","nombre", "usuario", "correo", "contrasenia"],
     });
     return res.status(200).json({ usuario });
   } catch (error) {
