@@ -15,6 +15,6 @@ router.post("/api/registrar/usuario", cors(), registrar);
 router.delete("/api/eliminar/usuario", cors(), borrarUsuario);
 router.put("/api/actualizar/usuario", cors(), actualizarUsuario);
 router.post("/api/buscar/usuario", cors(), buscarUsuario);
-router.get("/api/iniciar", cors(), iniciarSesion);
+router.post("/api/iniciar", cors(), iniciarSesion);
 export default router;
-//
+//! VALIDAR USUARIO O BUSCAR USUARIO POR (VALORES QUE TIENE EXCEPTUANDO PASSWORD )

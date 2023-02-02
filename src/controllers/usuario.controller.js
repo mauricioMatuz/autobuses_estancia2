@@ -85,7 +85,9 @@ export const actualizarUsuario = async (req, res) => {
 
 export const iniciarSesion = async (req, res) => {
   try {
+    console.log(req.boy);
     const { usuario, contrasenia } = req.body;
+    console.log("ENTRO A INICIAR SEION ", usuario, "\t", contrasenia);
     const usuarios = await usuarioM.findOne({
       where: {
         usuario,
@@ -108,13 +110,11 @@ export const iniciarSesion = async (req, res) => {
           .status(200)
           .json({ status: false, message: "La contraseña es incorrecta" });
       } else {
-        return res
-          .status(200)
-          .json({
-            status: true,
-            message: "Sesión iniciada correctamente",
-            usuariosC,
-          });
+        return res.status(200).json({
+          status: true,
+          message: "Sesión iniciada correctamente",
+          usuariosC,
+        });
       }
     }
   } catch (error) {

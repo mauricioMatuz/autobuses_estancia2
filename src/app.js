@@ -2,8 +2,6 @@ import express from "express";
 import swaggerUI from "swagger-ui-express";
 import YAML from "yamljs";
 
-// import { path } from "path";
-
 import boletosRoutes from "./routes/boletos.routes.js";
 import maletaRoutes from "./routes/maletas.routes.js";
 import usuarioRoutes from "./routes/usuario.routes.js";
@@ -25,9 +23,7 @@ app.use((req, res, next) => {
 });
 
 const swaggerDoc = YAML.load("doc_apiUser.yaml");
-const swaggerDocAuto = YAML.load("doc_apiAutobus.yaml");
-app.use("/api-doc/user", swaggerUI.serve, swaggerUI.setup(swaggerDoc));
-app.use("/api-doc/bus", swaggerUI.serve, swaggerUI.setup(swaggerDocAuto));
+app.use("/api-doc", swaggerUI.serve, swaggerUI.setup(swaggerDoc));
 
 app.use(boletosRoutes);
 app.use(maletaRoutes);
