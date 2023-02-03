@@ -12,12 +12,14 @@ export const usuarioM = sequelize.define("usuario", {
   },
   usuario: {
     type: DataTypes.STRING,
+    unique: true
   },
   correo: {
     type: DataTypes.STRING,
   },
   contrasenia: {
     type: DataTypes.STRING,
+    unique: true
   },
 });
 // para resubir
