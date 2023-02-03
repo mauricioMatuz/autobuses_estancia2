@@ -3,7 +3,7 @@ import { usuarioM } from "../models/usuario.models.js";
 export const verUsuarios = async (req, res) => {
   try {
     const usuario = await usuarioM.findAll({
-      attributes: ["id","nombre", "usuario", "correo", "contrasenia"],
+      attributes: ["id", "nombre", "usuario", "correo", "contrasenia"],
     });
     return res.status(200).json({ usuario });
   } catch (error) {
@@ -26,9 +26,22 @@ export const registrar = async (req, res) => {
       .status(200)
       .json({ status: true, message: "El registro se almaceno correctamente" });
   } catch (error) {
-    return res
-      .status(200)
-      .json({ status: false, message: "Error en el proceso de registro" });
+    console.log(error["fields"]["usuario"], " este es el error");
+    if (error["fields"]["usuario"] != null) {
+      return res.status(200).json({
+        status: false,
+        message: `Usuario ya creado`,
+      });
+    }
+    if (error["fields"]["contrasenia"] != null) {
+      return res
+        .status(200)
+        .json({ status: false, message: `Contrasenia ya usada` });
+    }
+    return res.status(200).json({
+      status: false,
+      message: `Error en el proceso de registro`,
+    });
   }
 };
 
