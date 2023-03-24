@@ -1,0 +1,402 @@
+openapi: 3.0.0
+info:
+  version: 2.0.0
+  title: Documentación de los usuarios
+  description: Ejemplos para las URL de los usuarios para usarlo en back
+servers:
+  # Added by API Auto Mocking Plugin
+  # Added by API Auto Mocking Plugin
+  # para resubir
+  - description: Ip de la API REST
+    url: http://localhost:8080
+
+tags:
+  - name: usuario
+    description: Documentación de las URL's de usuario
+    externalDocs:
+      url: http://localhost:8080
+
+  - name: autobus
+    description: Documentación de las URL's de autobuses
+    externalDocs:
+      url: http://localhost:8080
+
+  - name: rol
+    description: Documentacion de las URL's de creacion de roles
+    externalDocs:
+      url: http://localhost:8080
+
+paths:
+  /api/usuario:
+    get:
+      tags:
+        - usuario
+      summary: Listado de todo el usuario registrado
+      parameters:
+        - in: header
+          name: Token-Request
+          schema:
+            type: string
+            format: uuid
+          required: true
+
+      responses:
+        200:
+          description: Todo OK
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  properties:
+                    nombre:
+                      type: string
+                      example: mauricio matuz
+                    correo:
+                      type: string
+                      example: matamau@gmail.com
+                    contraseña:
+                      type: string
+                      example: contraseña
+                    usuario:
+                      type: string
+                      example: maumatuz
+
+        404:
+          description: Pagina no encontrada
+          content:
+            application/json:
+              schema:
+                type: string
+                example: { "message": "Error 404. Pagina no encontrada." }
+
+  /api/registrar/usuario:
+    post:
+      tags:
+        - usuario
+      summary: Crear nuevo usuario
+      requestBody:
+        description: Valores que se envia para Registro
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                nombre:
+                  type: string
+                  description: Nombre completo del usuario al registrar
+                  example: Eduardo Tamayo
+                usuario:
+                  type: string
+                  description: Usuario del que se registrará
+                  example: eduarTam
+                correo:
+                  type: string
+                  description: correo del usuario que se registrará
+                  example: eduardo@gmail.com
+                contrasenia:
+                  type: string
+                  description: Contraseña para poder logearse
+                  example: 123
+      responses:
+        200:
+          description: Registro exitoso
+
+        404:
+          description: Pagina no encontrada
+          content:
+            application/json:
+              schema:
+                type: string
+                example: { "message": "Error 404. Pagina no encontrada." }
+
+  /api/eliminar/usuario:
+    delete:
+      tags:
+        - usuario
+      summary: Borrar usuario
+      requestBody:
+        description: Borrar un usuario mediante su ID
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                id:
+                  type: string
+                  description: ID del usuario que se desea a eliminar
+                  example: 1
+      responses:
+        200:
+          description: Usuario eliminado
+
+  /api/actualizar/usuario:
+    put:
+      tags:
+        - usuario
+      summary: Actualizar usuario
+      requestBody:
+        description: Actualizar valores del usuario
+          (es posible solo actualizar algunas cosas, no es necesario todo,
+          en el ejemplo se usa todo pero se puede borrar y se actualizara de manera correcta)
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                id:
+                  type: string
+                  description: El ID que se usara para encontrar al usuario que desea actualizar
+                  example: 8
+                nombre:
+                  type: string
+                  description: Nombre completo del usuario al registrar
+                  example: Jaime Grimaldo
+                usuario:
+                  type: string
+                  description: Usuario del que se registrará
+                  example: El_Danker
+                correo:
+                  type: string
+                  description: correo del usuario que se registrará
+                  example: dankerGame@gmail.com
+                contrasenia:
+                  type: string
+                  description: Contraseña para poder logearse
+                  example: colmillo1470
+      responses:
+        200:
+          description: Usuario Actualizado
+
+  /api/buscar/usuario:
+    post:
+      tags:
+        - usuario
+      summary: Busqueda de usuario
+      requestBody:
+        description: Busqueda de usuario mediante la ID
+          (este ID es un ejemplo, pero se puede cambiar)
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                id:
+                  type: string
+                  description: ID del usuario que desa buscar
+                  example: 7
+      responses:
+        200:
+          description: Mostrar caracteristicas del usuario en concreto
+
+  /api/iniciar:
+    get:
+      tags:
+        - usuario
+      summary: Inicio de Sesion
+      requestBody:
+        description: Forma de iniciar sesion
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                usuario:
+                  type: string
+                  description: usuario creado previamente al registrar
+                  example: El_Danker
+                contrasenia:
+                  type: string
+                  description: contraseña del usuario previamente creado
+                  example: colmillo1470
+      responses:
+        200:
+          description: Moverse a la ventana del dashboard
+  /api/autobus:
+    get:
+      tags:
+        - autobus
+      summary: Lista de los autobuses registrados
+
+      responses:
+        200:
+          description: Todo OK
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  properties:
+                    clave:
+                      type: string
+                      example: 1LJ123sQWE
+                    placa:
+                      type: string
+                      example: JKHA-123
+                    numasientos:
+                      type: integer
+                      example: 40
+                    fecha:
+                      type: string
+                      example: 23-12-21
+                    tipo:
+                      type: string
+                      example: turistico
+                    nombre:
+                      type: string
+                      example: Mauricio matuz
+                    licencia:
+                      type: string
+                      example: LH124078108
+
+  /api/autobus/register:
+    post:
+      tags:
+        - autobus
+      summary: Registro de autobuses
+      requestBody:
+        description: Forma correcta de enviar el JSON
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                clave:
+                  type: string
+                  example: 1LJ123s
+                placa:
+                  type: string
+                  example: JKHA-123s
+                numasientos:
+                  type: integer
+                  example: 401
+                fecha:
+                  type: string
+                  example: 23-12-21
+                tipo:
+                  type: string
+                  example: turisticos
+                nombre:
+                  type: string
+                  example: Mauricios
+                licencia:
+                  type: string
+                  example: LH124078108s
+      responses:
+        200:
+          description: Registro exitoso
+          content:
+            application/json:
+              schema:
+                type: string
+                example:
+                  {
+                    "status": true,
+                    "message": "El registro se almacenó correctamente",
+                  }
+
+  /api/autobus/actualizar:
+    put:
+      tags:
+        - autobus
+      summary: Actualizar datos de atuobuses
+      requestBody:
+        description: Los datos de forma ordenada
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                id:
+                  type: string
+                  description: El ID que se usara para encontrar el autobus que se desea actualizar
+                  example: 2
+                clave:
+                  type: string
+                  example: 1LJ123S
+                placa:
+                  type: string
+                  example: JKHA-123S
+                numasientos:
+                  type: integer
+                  example: 401
+                fecha:
+                  type: string
+                  example: 23-12-21
+                tipo:
+                  type: string
+                  example: turistico
+                nombre:
+                  type: string
+                  example: Mauricio
+                licencia:
+                  type: string
+                  example: LH124078108S
+      responses:
+        200:
+          description: Autobus actualizado
+          content:
+            application/json:
+              schema:
+                type: string
+                example: { status: true, message: "Autobus actualizado" }
+
+  /api/autobus/borrar:
+    delete:
+      tags:
+        - autobus
+      summary: Borrar un autobus
+      requestBody:
+        description: Borrar un autobus mediante un ID
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                id:
+                  type: string
+                  description: ID del autobus
+                  example: 3
+      responses:
+        200:
+          description: Contestación
+          content:
+            application/json:
+              schema:
+                type: string
+                example: { status: true, message: "Autobus borrado" }
+  /api/registrar/rol:
+    post:
+      tags:
+        - rol
+      summary: Creación de nuevos roles para el usuario
+      requestBody:
+        description: Crear los roles "faltantes", vendedor y usuario con token de administrador
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                rol:
+                  type: string
+                  description: para crear los roles vendedor y cliente especificamente
+      responses:
+        200:
+          description: Rol registrado
+
+        404:
+          description: Pagina no encontrada
+          content:
+            application/json:
+              schema:
+                type: string
+                example: { "message": "Error 404. Pagina no encontrada." }
